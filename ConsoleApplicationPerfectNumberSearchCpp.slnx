@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="ConsoleApplicationPerfectNumberSearchCpp/ConsoleApplicationPerfectNumberSearchCpp.vcxproj" Id="47899400-d878-4189-a376-b2276439a671" />
+</Solution>
