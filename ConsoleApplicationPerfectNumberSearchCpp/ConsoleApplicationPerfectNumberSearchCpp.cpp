@@ -66,18 +66,18 @@ static int sumOfDivisors(int n) {
 
 static void printDivisors(const vector<int>& divisors) {
 	for (size_t i = 0; i < divisors.size(); i++) {
-		std::cout << divisors[i];
+		cout << divisors[i];
 		if (i < divisors.size() - 1) {
-			std::cout << ", ";
+			cout << ", ";
 		}
 	}
 }
 
 int main()
 {
-	std::cout << "Recherche des nombres parfaits.\n";
+	cout << "Recherche des nombres parfaits.\n";
 	vector<string> result;
-	std::ostringstream sb;
+	ostringstream sb;
 	int finalNumber = 500;// 33550336;
 	sb << "Liste des nombres parfaits entre 2 et " << finalNumber << " sont: ";
 	vector<string> perfectNumbers;
@@ -92,11 +92,11 @@ int main()
 
 		if (currentNumber == calculatedSum)
 		{
-			std::cout << i << " est un nombre parfait.";
-			std::cout << " Ses diviseurs sont : ";
+			cout << i << " est un nombre parfait.";
+			cout << " Ses diviseurs sont : ";
 			printDivisors(removeLastValue(divisors));
-			std::cout << " et la somme de ses diviseurs est : " << calculatedSum;
-			std::cout << endl;
+			cout << " et la somme de ses diviseurs est : " << calculatedSum;
+			cout << endl;
 			perfectNumbers.push_back(to_string(currentNumber));
 		}
 		else
@@ -111,7 +111,7 @@ int main()
 
 	// Print the list of perfect numbers found
 	for (const auto& num : perfectNumbers) {
-		std::cout << num << std::endl;
+		cout << num << endl;
 	}
 
 	// on sauvegarde le résultat dans un fichier texte
@@ -123,8 +123,8 @@ int main()
 	}
 
 	int sortie;
-	std::cout << "Appuyez sur une touche pour terminer: ";
-	std::cin >> sortie;
+	cout << "Appuyez sur une touche pour terminer: ";
+	cin >> sortie;
 	return 0;
 }
 
