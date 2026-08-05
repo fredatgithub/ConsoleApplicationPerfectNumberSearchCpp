@@ -78,12 +78,13 @@ int main()
 	cout << "Recherche des nombres parfaits.\n";
 	vector<string> result;
 	ostringstream sb;
-	int finalNumber = 500;// 33550336;
-	sb << "Liste des nombres parfaits entre 2 et " << finalNumber << " sont: ";
+  int startNumber = 2;
+	int finalNumber = 8129;// 33550336;
+	sb << "Liste des nombres parfaits entre " << startNumber << " et " << finalNumber << " sont: ";
 	vector<string> perfectNumbers;
 	perfectNumbers.push_back("Les nombres parfaits sont des nombres qui sont égaux à la somme de leurs diviseurs propres.");
 
-	for (int i = 2; i <= finalNumber; i++)
+	for (int i = startNumber; i <= finalNumber; i++)
 	{
 		// int maxInt = 2 147 483 647;
 		int currentNumber = i;
