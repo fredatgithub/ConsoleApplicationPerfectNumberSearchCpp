@@ -78,8 +78,8 @@ int main()
 	cout << "Recherche des nombres parfaits.\n";
 	vector<string> result;
 	ostringstream sb;
-  int startNumber = 2;
-	int finalNumber = 8129;// 33550336;
+  int startNumber = 8129;
+	int finalNumber = 33550337; // 33550336;
 	sb << "Liste des nombres parfaits entre " << startNumber << " et " << finalNumber << " sont: ";
 	vector<string> perfectNumbers;
 	perfectNumbers.push_back("Les nombres parfaits sont des nombres qui sont égaux à la somme de leurs diviseurs propres.");
@@ -116,11 +116,12 @@ int main()
 	}
 
 	// on sauvegarde le résultat dans un fichier texte
-	string fileName = "perfect_numbers.txt";
+  const int fileNumber = 2;
+	string fileName = "perfect_numbers" + to_string(fileNumber) + ".txt";
 	ofstream outputFile(fileName);
 
 	for (const auto& num : perfectNumbers) {
-		outputFile << num << std::endl;
+		outputFile << num << endl;
 	}
 
 	int sortie;

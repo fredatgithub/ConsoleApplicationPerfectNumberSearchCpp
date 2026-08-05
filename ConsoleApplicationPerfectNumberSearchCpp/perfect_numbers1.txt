@@ -1,0 +1,5 @@
+Les nombres parfaits sont des nombres qui sont égaux à la somme de leurs diviseurs propres.
+6
+28
+496
+8128
