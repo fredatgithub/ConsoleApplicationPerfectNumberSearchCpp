@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <sstream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -79,6 +80,9 @@ int main()
 	std::ostringstream sb;
 	int finalNumber = 500;// 33550336;
 	sb << "Liste des nombres parfaits entre 2 et " << finalNumber << " sont: ";
+	vector<string> perfectNumbers;
+	perfectNumbers.push_back("Les nombres parfaits sont des nombres qui sont égaux à la somme de leurs diviseurs propres.");
+
 	for (int i = 2; i <= finalNumber; i++)
 	{
 		// int maxInt = 2 147 483 647;
@@ -93,6 +97,7 @@ int main()
 			printDivisors(removeLastValue(divisors));
 			std::cout << " et la somme de ses diviseurs est : " << calculatedSum;
 			std::cout << endl;
+			perfectNumbers.push_back(to_string(currentNumber));
 		}
 		else
 		{
@@ -102,6 +107,19 @@ int main()
 			cout << " et la somme de ses diviseurs est: " << calculatedSum;*/
 			cout << endl;
 		}
+	}
+
+	// Print the list of perfect numbers found
+	for (const auto& num : perfectNumbers) {
+		std::cout << num << std::endl;
+	}
+
+	// on sauvegarde le résultat dans un fichier texte
+	string fileName = "perfect_numbers.txt";
+	ofstream outputFile(fileName);
+
+	for (const auto& num : perfectNumbers) {
+		outputFile << num << std::endl;
 	}
 
 	int sortie;
