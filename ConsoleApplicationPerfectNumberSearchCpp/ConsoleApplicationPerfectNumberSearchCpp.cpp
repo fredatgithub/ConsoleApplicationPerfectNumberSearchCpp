@@ -77,7 +77,7 @@ int main()
 	std::cout << "Recherche des nombres parfaits.\n";
 	vector<string> result;
 	std::ostringstream sb;
-	int finalNumber = 33550336;
+	int finalNumber = 500;// 33550336;
 	sb << "Liste des nombres parfaits entre 2 et " << finalNumber << " sont: ";
 	for (int i = 2; i <= finalNumber; i++)
 	{
@@ -89,9 +89,9 @@ int main()
 		if (currentNumber == calculatedSum)
 		{
 			std::cout << i << " est un nombre parfait.";
-			std::cout << " Ses diviseurs sont: ";
+			std::cout << " Ses diviseurs sont : ";
 			printDivisors(removeLastValue(divisors));
-			std::cout << " et la somme de ses diviseurs est: " << calculatedSum;
+			std::cout << " et la somme de ses diviseurs est : " << calculatedSum;
 			std::cout << endl;
 		}
 		else
