@@ -111,7 +111,6 @@ int main()
 }
 
 // Un nombre parfait est la somme de ses diviseurs sauf lui-même
-// Chercher tous les nombres parfaits entre 1 et 1000
 // Pour cela chercher tous les diviseurs d'un nombre et les additionner
 // Les 10 premiers nombres parfaits:
 // 6
