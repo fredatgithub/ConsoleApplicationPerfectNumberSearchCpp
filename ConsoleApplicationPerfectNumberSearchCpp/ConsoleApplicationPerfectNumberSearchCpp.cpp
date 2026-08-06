@@ -119,6 +119,8 @@ int main()
   const int fileNumber = 2;
 	string fileName = "perfect_numbers" + to_string(fileNumber) + ".txt";
 	ofstream outputFile(fileName);
+  cout << "Les nombres parfaits trouvés ont été sauvegardés dans le fichier: " << fileName << endl;
+
 
 	for (const auto& num : perfectNumbers) {
 		outputFile << num << endl;
