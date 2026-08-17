@@ -1,0 +1,1 @@
+Les nombres parfaits sont des nombres qui sont égaux à la somme de leurs diviseurs propres.
