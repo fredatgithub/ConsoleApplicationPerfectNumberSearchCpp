@@ -1,0 +1,157 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <algorithm>
+#include <sstream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+static vector<unsigned long long> getAllDivisors(unsigned long long number)
+{
+	vector<unsigned long long> divisors;
+
+	for (unsigned long long i = 1; i <= sqrt(number); i++)
+	{
+		if (number % i == 0)
+		{
+			divisors.push_back(i);
+
+			if (i != number / i)
+			{
+				divisors.push_back(number / i);
+			}
+		}
+	}
+
+	sort(divisors.begin(), divisors.end());
+	return divisors;
+}
+
+static vector<unsigned long long> removeLastValue(vector<unsigned long long>& list)
+{
+	if (!list.empty())
+	{
+		list.pop_back();
+	}
+
+	return list;
+}
+
+
+static unsigned long long addAllDivisors(const vector<unsigned long long>& divisors) {
+	unsigned long long sum = 0;
+	for (size_t i = 0; i < divisors.size(); i++)
+	{
+		sum += divisors[i];
+	}
+
+	return sum;
+}
+
+static unsigned long long sumOfDivisors(unsigned long long n) {
+	unsigned long long sum = 0;
+	for (unsigned long long i = 1; i <= sqrt(n); i++) {
+		if (n % i == 0) {
+			sum += i;
+			if (i != n / i) {
+				sum += n / i;
+			}
+		}
+	}
+
+	return sum;
+}
+
+static void printDivisors(const vector<unsigned long long>& divisors) {
+	for (size_t i = 0; i < divisors.size(); i++) {
+		cout << divisors[i];
+		if (i < divisors.size() - 1) {
+			cout << ", ";
+		}
+	}
+}
+
+int main()
+{
+	cout << "Recherche des nombres parfaits.\n";
+	vector<string> result;
+	ostringstream sb;
+	const unsigned long long startNumber = 2'147'483'647; // 2 147 483 647
+	// numeric_limits<unsigned long long>::max() = 18 446 744 073 709 551 615
+	constexpr unsigned long long finalNumber = numeric_limits<unsigned long long>::max(); //8589869057; // 8 589 869 056;
+	sb << "Liste des nombres parfaits entre " << startNumber << " et " << finalNumber << " sont: ";
+	vector<string> perfectNumbers;
+	perfectNumbers.push_back("Les nombres parfaits sont des nombres qui sont égaux à la somme de leurs diviseurs propres.");
+
+	for (unsigned long long i = startNumber; i <= finalNumber; i++)
+	{
+		// unsigned long long maxInt = 18 446 744 073 709 551 615;
+		unsigned long long currentNumber = i;
+		vector<unsigned long long> divisors = getAllDivisors(currentNumber);
+		unsigned long long calculatedSum = addAllDivisors(divisors) - currentNumber; // Subtract the number itself from the sum of divisors
+
+		if (currentNumber == calculatedSum)
+		{
+			cout << i << " est un nombre parfait.";
+			cout << " Ses diviseurs sont : ";
+			printDivisors(removeLastValue(divisors));
+			cout << " et la somme de ses diviseurs est : " << calculatedSum;
+			cout << endl;
+			perfectNumbers.push_back(to_string(currentNumber));
+		}
+		else
+		{
+			cout << i << " n'est pas un nombre parfait.";
+			/*cout << " Ses diviseurs sont: ";
+			printDivisors(removeLastValue(divisors));
+			cout << " et la somme de ses diviseurs est: " << calculatedSum;*/
+			cout << endl;
+		}
+	}
+
+	// Print the list of perfect numbers found
+	for (const auto& num : perfectNumbers) {
+		cout << num << endl;
+	}
+
+	// on sauvegarde le résultat dans un fichier texte
+	const int fileNumber = 3;
+	string fileName = "perfect_numbers" + to_string(fileNumber) + ".txt";
+	ofstream outputFile(fileName);
+	cout << "Les nombres parfaits trouvés ont été sauvegardés dans le fichier: " << fileName << endl;
+
+	// on affiche si pas de résultat
+	if (perfectNumbers.empty())
+	{
+		cout << " Pas de resultat" << endl;
+	}
+	else
+	{
+		for (const auto& num : perfectNumbers) {
+			outputFile << num << endl;
+		}
+	}
+
+	int sortie;
+	cout << "Appuyez sur une touche pour terminer: ";
+	cin >> sortie;
+	return 0;
+}
+
+// Un nombre parfait est la somme de ses diviseurs sauf lui-même
+// Pour cela chercher tous les diviseurs d'un nombre et les additionner
+// Les 10 premiers nombres parfaits:
+// 6
+// 28
+// 496
+// 8128
+// 33 550 336
+// 8 589 869 056
+// 137 438 691 328
+// 2 305 843 008 139 952 128
+// 18 446 744 073 709 551 615 unsigned long long max value is not a perfect number
+// 2 658 455 991 569 831 744 654 692 615 953 842 176
+// 191 561 942 608 236 107 294 793 378 084 303 638 130 997 321 548 169 216
+
