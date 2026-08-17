@@ -127,9 +127,11 @@ int main()
 	{
 		cout << " Pas de resultat" << endl;
 	}
-
-	for (const auto& num : perfectNumbers) {
-		outputFile << num << endl;
+	else
+	{
+		for (const auto& num : perfectNumbers) {
+			outputFile << num << endl;
+		}
 	}
 
 	int sortie;
